@@ -1,3 +1,7 @@
+let humanScore = 0;
+let computerScore = 0;
+let roundNumber = 0;
+
 function getComputerChoice(){
     let compChoice = Math.floor(Math.random() * 3);
     if (compChoice === 0){
@@ -22,34 +26,30 @@ function getHumanChoice(){
     return humanChoice;
 }
 
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    let roundNumber = 0;
-
-     function playRound(humanChoice, computerChoice){
-        let message = "";
-        if (humanChoice === computerChoice){
-            roundNumber ++;
-            message = `Tie game! You both chose ${humanChoice}!`;
-            console.log(message);
-        }else if((humanChoice === "rock" && computerChoice === "scissors") || 
-                 (humanChoice === "paper" && computerChoice === "rock") || 
-                 (humanChoice === "scissors" && computerChoice === "paper"))
-        {
-            roundNumber ++;
-            humanScore ++;
-            message = `You win! ${humanChoice} beats ${computerChoice}!`;
-            console.log(message);
-        }else{
-            roundNumber ++;
-            computerScore ++;
-            message = `You lose! ${computerChoice} beats ${humanChoice}!`; 
-            console.log(message);       
-        }
-        console.log(`Round ${roundNumber} Score: Human ${humanScore} - Computer ${computerScore}`);
+function playRound(humanChoice, computerChoice){
+    let message = "";
+    if (humanChoice === computerChoice){
+        roundNumber ++;
+        message = `Tie game! You both chose ${humanChoice}!`;
+        console.log(message);
+    }else if((humanChoice === "rock" && computerChoice === "scissors") || 
+             (humanChoice === "paper" && computerChoice === "rock") || 
+             (humanChoice === "scissors" && computerChoice === "paper"))
+    {
+        roundNumber ++;
+        humanScore ++;
+        message = `You win! ${humanChoice} beats ${computerChoice}!`;
+        console.log(message);
+    }else{
+        roundNumber ++;
+        computerScore ++;
+        message = `You lose! ${computerChoice} beats ${humanChoice}!`; 
+        console.log(message);       
     }
+    console.log(`Round ${roundNumber} Score: Human ${humanScore} - Computer ${computerScore}`);
+}
 
+function playGame(){
     while(roundNumber < 5){
         const humanChoice = getHumanChoice();
         const computerChoice = getComputerChoice();
