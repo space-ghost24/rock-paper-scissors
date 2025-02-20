@@ -36,10 +36,18 @@ function playRound(humanChoice, computerChoice){
     }
     
     const scoreboard = document.querySelector('.scoreboard');
-    scoreboard.innerHTML = `
-        <p>${message}</p>
-        <p>Round ${roundNumber} Score: Human ${humanScore} - Computer ${computerScore}</p>
-    `;
+
+    while (scoreboard.firstChild) {
+        scoreboard.removeChild(scoreboard.firstChild);
+    }
+
+    const para = document.createElement('p');
+    messageElement.textContent = message;
+    scoreboard.appendChild(messageElement);
+
+    const scoreElement = document.createElement('p');
+    scoreElement.textContent = `Round ${roundNumber} Score: Human ${humanScore} - Computer ${computerScore}`;
+    scoreboard.appendChild(scoreElement);
 
     if (humanScore === 5) {
         gameOver = true;  
@@ -58,7 +66,7 @@ const buttons = document.querySelectorAll('.gameButtons button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const humanChoice = button.className.toLowerCase(); 
+        const humanChoice = button.className; 
         const computerChoice = getComputerChoice(); 
         playRound(humanChoice, computerChoice); 
     });
