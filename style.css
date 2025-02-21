@@ -34,14 +34,13 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
     color: #333;
     background-color: lightgray;
 }
 
 /* Hover Effect */
 button:hover {
-    transform: scale(1.1);
+    background-color: rgb(219, 218, 218);
 }
 
 /* Scoreboard Styles */
