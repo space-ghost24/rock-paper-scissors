@@ -1,0 +1,62 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+/* Parent container for buttons and scoreboard */
+.gameContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container for the buttons */
+.gameButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    margin-bottom: 20px; /* Space between buttons and scoreboard */
+}
+
+/* Style for each button */
+button {
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #333;
+    background-color: lightgray;
+}
+
+/* Hover Effect */
+button:hover {
+    transform: scale(1.1);
+}
+
+/* Scoreboard Styles */
+.scoreboard {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    min-height: 500px; /* Minimum height */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align the content at the top of the scoreboard */
+}
+
+/* Add space between messages */
+.scoreboard p {
+    margin: 10px 0; /* Space between each message */
+}
