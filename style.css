@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 400px;
-    margin-bottom: 20px; /* Space between buttons and scoreboard */
+    margin-bottom: 20px;
 }
 
 /* Style for each button */
@@ -49,13 +49,12 @@ button:hover {
     font-weight: bold;
     color: #333;
     text-align: center;
-    min-height: 500px; /* Minimum height */
+    min-height: 500px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align the content at the top of the scoreboard */
 }
 
 /* Add space between messages */
 .scoreboard p {
-    margin: 10px 0; /* Space between each message */
+    margin: 10px 0;
 }
