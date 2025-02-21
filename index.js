@@ -3,14 +3,18 @@ let computerScore = 0;
 let roundNumber = 0;
 let gameOver = false;
 
+function capitalizeChoice(choice) {
+    return choice.charAt(0).toUpperCase() + choice.slice(1);
+}
+
 function getComputerChoice(){
     let compChoice = Math.floor(Math.random() * 3);
     if (compChoice === 0){
-        return "rock"
+        return "rock";
     }else if(compChoice === 1){
-        return "paper"
+        return "paper";
     }else if(compChoice === 2){
-        return "scissors"
+        return "scissors";
     }
 }
 
@@ -19,29 +23,32 @@ function playRound(humanChoice, computerChoice){
 
     let message = "";
 
-    if (humanChoice === computerChoice){
-        roundNumber ++;
-        message = `Tie game! You both chose ${humanChoice}!`;
-    }else if((humanChoice === "rock" && computerChoice === "scissors") || 
-             (humanChoice === "paper" && computerChoice === "rock") || 
-             (humanChoice === "scissors" && computerChoice === "paper"))
-    {
-        roundNumber ++;
-        humanScore ++;
-        message = `You win! ${humanChoice} beats ${computerChoice}!`;
-    }else{
-        roundNumber ++;
-        computerScore ++;
-        message = `You lose! ${computerChoice} beats ${humanChoice}!`;        
+    const humanChoiceCapitalized = capitalizeChoice(humanChoice);
+    const computerChoiceCapitalized = capitalizeChoice(computerChoice);
+
+    if (humanChoice === computerChoice) {
+        roundNumber++;
+        message = `Tie game! You both chose ${humanChoiceCapitalized}!`;
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        roundNumber++;
+        humanScore++;
+        message = `You win! ${humanChoiceCapitalized} beats ${computerChoiceCapitalized}!`;
+    } else {
+        roundNumber++;
+        computerScore++;
+        message = `You lose! ${computerChoiceCapitalized} beats ${humanChoiceCapitalized}!`;
     }
-    
+
     const scoreboard = document.querySelector('.scoreboard');
 
-    while (scoreboard.firstChild) {
-        scoreboard.removeChild(scoreboard.firstChild);
-    }
+    const existingMessages = scoreboard.querySelectorAll('p');
+    existingMessages.forEach(msg => msg.remove());
 
-    const para = document.createElement('p');
+    const messageElement = document.createElement('p');
     messageElement.textContent = message;
     scoreboard.appendChild(messageElement);
 
@@ -50,12 +57,12 @@ function playRound(humanChoice, computerChoice){
     scoreboard.appendChild(scoreElement);
 
     if (humanScore === 5) {
-        gameOver = true;  
+        gameOver = true;
         const winnerMessage = document.createElement('p');
         winnerMessage.textContent = "Congratulations! You won the game!";
         scoreboard.appendChild(winnerMessage);
     } else if (computerScore === 5) {
-        gameOver = true;  
+        gameOver = true;
         const loserMessage = document.createElement('p');
         loserMessage.textContent = "Sorry, the computer won the game!";
         scoreboard.appendChild(loserMessage);
@@ -66,8 +73,8 @@ const buttons = document.querySelectorAll('.gameButtons button');
 
 buttons.forEach(button => {
     button.addEventListener('click', () => {
-        const humanChoice = button.className; 
-        const computerChoice = getComputerChoice(); 
-        playRound(humanChoice, computerChoice); 
+        const humanChoice = button.className;
+        const computerChoice = getComputerChoice();
+        playRound(humanChoice, computerChoice);
     });
 });
